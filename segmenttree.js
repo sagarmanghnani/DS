@@ -27,10 +27,10 @@ class SegmentTree{
           return this.segTreeArr[pos];
       }else{
           var mid = (low + high) >>> 1;
-          var left_sum = this.createSegTree(low, mid, 2*pos + 1);
-          var right_sum = this.createSegTree(mid + 1, high, 2*pos + 2);
+          var left_val = this.createSegTree(low, mid, 2*pos + 1);
+          var right_val = this.createSegTree(mid + 1, high, 2*pos + 2);
           
-          this.segTreeArr[pos] = this.operate(left_sum, right_sum);
+          this.segTreeArr[pos] = this.operate(left_val, right_val);
           return this.segTreeArr[pos];
       }
   }
@@ -45,13 +45,13 @@ class SegmentTree{
           
           var mid = (r1 + r2) >>> 1;
           
-          var left_sum = this._searchQuery(r1, mid, q1, q2, 2*pos + 1);
-          var right_sum = this._searchQuery(mid + 1, r2, q1, q2, 2*pos + 2);
+          var left_val = this._searchQuery(r1, mid, q1, q2, 2*pos + 1);
+          var right_val = this._searchQuery(mid + 1, r2, q1, q2, 2*pos + 2);
           
           
           
           
-          return this.operate(left_sum, right_sum);
+          return this.operate(left_val, right_val);
       }
   }
   
@@ -73,9 +73,9 @@ class SegmentTree{
       }else{
           
           var mid = (low + high) >>> 1;
-          var left_sum = this._updateSegTree(index, updateValue, low, mid, 2*pos + 1);
-          var right_sum = this._updateSegTree(index, updateValue, mid + 1, high, 2*pos + 2);
-          this.segTreeArr[pos] = this.operate(left_sum, right_sum);
+          var left_val= this._updateSegTree(index, updateValue, low, mid, 2*pos + 1);
+          var right_val = this._updateSegTree(index, updateValue, mid + 1, high, 2*pos + 2);
+          this.segTreeArr[pos] = this.operate(left_val, right_val);
           return this.segTreeArr[pos];
       }
   }
